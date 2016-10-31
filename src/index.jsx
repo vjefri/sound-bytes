@@ -6,6 +6,9 @@ import storeConfig from './store';
 
 import { App } from './screens/app';
 
+import 'bulma';
+import '../styles/main.scss';
+
 const store = storeConfig();
 
 render(

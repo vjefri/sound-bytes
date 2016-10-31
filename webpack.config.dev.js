@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -13,7 +14,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/',
     sourceMapFilename: 'bundle.js.map',
   },
   module: {
@@ -24,20 +24,27 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.scss|sass$/,
+        loader: ExtractTextPlugin.extract('style', 'css!sass?'),
+      },
+      {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader',
+        loader: ExtractTextPlugin.extract('style', 'css'),
       },
     ],
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, './styles')],
   },
   postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
   plugins: [
-    new DashboardPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new DashboardPlugin(), // Nice Visuals
     new webpack.HotModuleReplacementPlugin(), // Generate hot update chunks
     new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('css/bundle.css'),
   ],
   devServer: {
     historyApiFallback: true,
