@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router';
 
@@ -12,3 +12,7 @@ export const AppRoot = props => (
   </Provider>
 );
 
+AppRoot.propTypes = {
+  store: PropTypes.shape({}),
+  history: PropTypes.shape({}),
+};

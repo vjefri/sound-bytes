@@ -55,8 +55,5 @@ module.exports = {
     inline: true, // Live reloading for entire page
 
     stats: 'errors-only',
-    proxy: {
-      '/api/*': 'http://localhost:8080',
-    },
   },
 };
