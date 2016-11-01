@@ -1,20 +1,29 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { AppContainer } from 'react-hot-loader';
+import { browserHistory } from 'react-router';
 import 'bulma';
+import { AppRoot } from './appRoot';
 
 import storeConfig from './store';
-import { App } from './screens/app';
 import '../styles/main.scss';
 
 const store = storeConfig();
 
-render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App} />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+const renderApp = (App) => {
+  render(
+    <AppContainer>
+      <App store={store} history={browserHistory} />
+    </AppContainer>,
+    document.getElementById('root')
+    );
+};
+
+if (module.hot) {
+  module.hot.accept('./appRoot', () => {
+    const nextAppRoot = require('./appRoot').AppRoot;
+    renderApp(nextAppRoot);
+  });
+}
+
+renderApp(AppRoot);

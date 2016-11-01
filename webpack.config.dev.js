@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080', // Enable websocket connection
     'webpack/hot/only-dev-server', // Perform HRM in browser, doens't reload browser on errors
     path.join(__dirname, 'src'), // App entry point
@@ -49,7 +50,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './src',
-
+    colors: true,
     hot: true, // Enable HRM in webpack-dev-server
     inline: true, // Live reloading for entire page
 

@@ -1,4 +1,3 @@
-body {
-  font: 100% Helvetica, sans-serif;
-  background-color: red;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@import './desktop/header.scss';
