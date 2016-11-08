@@ -1,13 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Header from './shared/header';
+import Header from './shared/Header';
+import SongsContainer from './dashboard/SongsContainer';
 
 export class App extends Component {
 
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <SongsContainer />
+      </div>
     );
   }
 }

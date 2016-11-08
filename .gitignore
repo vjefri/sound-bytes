@@ -25,4 +25,4 @@ jspm_packages
 .npm
 
 dist
-.env
+.env/coverage

@@ -56,4 +56,10 @@ module.exports = {
 
     stats: 'errors-only',
   },
+  // Enzyme to work with webpack
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
 };

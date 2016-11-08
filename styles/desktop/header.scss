@@ -1,5 +1,11 @@
+$header-color: #3a3f41;
+
 .sound-head {
-  background-color: #3a3f41;
+  background-color: $header-color;
+}
+
+.nav {
+   background-color: $header-color;
 }
 
 .nav-logo {
